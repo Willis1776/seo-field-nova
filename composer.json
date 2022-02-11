@@ -1,5 +1,5 @@
 {
-    "name": "willis1776/seo-meta-nova-field",
+    "name": "willis1776/seo-nova-field",
     "description": "A Laravel Nova field which adds all SEO related meta fields to an Resource.",
     "license": "MIT",
     "type": "library",
@@ -19,13 +19,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Gwd\\SeoMeta\\": "src/"
+            "Willis1776\\SeoMeta\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Gwd\\SeoMeta\\FieldServiceProvider"
+                "Willis1776\\SeoMeta\\FieldServiceProvider"
             ]
         }
     },
