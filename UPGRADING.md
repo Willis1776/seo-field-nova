@@ -8,7 +8,7 @@ publish the configs and migrations ( **this will override old config file so tak
 add them again** ):
 
 ```
-php artisan vendor:publish --provider="Gwd\SeoMeta\FieldServiceProvider" --force
+php artisan vendor:publish --provider="Willis1776\SeoMeta\FieldServiceProvider" --force
 ```
 
 ---
