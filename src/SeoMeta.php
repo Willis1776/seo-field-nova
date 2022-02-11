@@ -1,11 +1,11 @@
 <?php
 
-namespace Gwd\SeoMeta;
+namespace Willis1776\SeoMeta;
 
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Illuminate\Support\Facades\Storage;
-use Gwd\SeoMeta\Models\SeoMetaItem;
+use Willis1776\SeoMeta\Models\SeoMetaItem;
 
 class SeoMeta extends Field
 {

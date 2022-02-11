@@ -9,13 +9,13 @@ This custom nova field, can add SEO related fields to any Model through a morph 
 To install the package run the install below:
 
 ```
-composer require gwd/seo-meta-nova-field
+composer require willis1776/seo-meta-nova-field
 ```
 
 And then publish the configs and migrations :
 
 ```
-php artisan vendor:publish --provider="Gwd\SeoMeta\FieldServiceProvider"
+php artisan vendor:publish --provider="Willis1776\SeoMeta\FieldServiceProvider"
 ```
 
 And then run the migrations:
@@ -31,7 +31,7 @@ trait:
 
 ```
 ...
-use Gwd\SeoMeta\Traits\SeoMetaTrait;
+use Willis1776\SeoMeta\Traits\SeoMetaTrait;
 
 class Page extends Model
 {
@@ -44,7 +44,7 @@ Then use the field in the nova resource `App\Nova\Page`:
 
 ```
 ...
-use Gwd\SeoMeta\SeoMeta;
+use Willis1776\SeoMeta\SeoMeta;
 
 class Page extends Resource
 {
@@ -76,7 +76,7 @@ the `SeoMetaTrait` trait.
 If you dont have any selected model/resource on the current page, then get the given SEO data for the page like this:
 
 ```
-use Gwd\SeoMeta\Helper\Seo;
+use Willis1776\SeoMeta\Helper\Seo;
 ...
 Route::get('/tester', function(){
     return view('page', [
@@ -141,7 +141,7 @@ When you want the eloquent model to be shown in the sitemap then you need to add
 
 ```
 ...
-use Gwd\SeoMeta\Traits\SeoSitemapTrait;
+use Willis1776\SeoMeta\Traits\SeoSitemapTrait;
 
 class Page extends Model
 {

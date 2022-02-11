@@ -1,6 +1,6 @@
 <?php
 
-use Gwd\SeoMeta\Models\SeoMetaItem;
+use Willis1776\SeoMeta\Models\SeoMetaItem;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

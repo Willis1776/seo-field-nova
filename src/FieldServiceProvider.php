@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwd\SeoMeta;
+namespace Willis1776\SeoMeta;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;

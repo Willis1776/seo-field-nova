@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwd\SeoMeta\Traits;
+namespace Willis1776\SeoMeta\Traits;
 
 trait SeoSitemapTrait
 {

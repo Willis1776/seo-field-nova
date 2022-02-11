@@ -1,5 +1,5 @@
 <?php
-namespace Gwd\SeoMeta\Helper;
+namespace Willis1776\SeoMeta\Helper;
 
 use Illuminate\Support\Facades\Storage;
 
