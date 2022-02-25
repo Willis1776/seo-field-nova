@@ -1,3 +1,4 @@
+@section('seo-meta')
 @php
     if (isset($page) && $page && method_exists($page, 'getSeoMeta')) {
         $seo = $page->buildSeoForCurrentLocale();
@@ -38,3 +39,4 @@
 @else
 <meta name="robots" content="{{ !empty($seo['follow_type']) && config('seo.seo_status') ? $seo['follow_type'] : 'noindex, nofollow' }}" />
 @endif
+@stop
