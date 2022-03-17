@@ -3,13 +3,14 @@
         <template slot="field" v-if="ready">
           <div v-for="(locale,index) in availableLocales" :key="index">
             <div class="form-group mb-3">
-                <label class="mb-1 block">Title [{{locale}}]:</label>
+                <label class="mb-1 block">Title:</label>
                 <input
                     :id="field.name + locale + '-title'"
                     type="text"
                     class="w-full form-control form-input form-input-bordered"
                     :class="errorClasses"
                     :placeholder="field.name[locale]"
+                    :maxlength="70"
                     v-model="value.title[locale]"
                     @input="setHasChanged"
                 />
@@ -19,10 +20,11 @@
                 >{{ field.title_format.replace(':text', value.title[locale] || '') }}</p>
             </div>
             <div class="form-group mb-3">
-                <label class="mb-1 block">Description [{{locale}}]:</label>
+                <label class="mb-1 block">Description:</label>
                 <textarea
                     class="w-full form-control form-input form-input-bordered py-3 h-auto"
                     :id="field.name + locale + '-description'"
+                    :maxlength="160"
                     placeholder="Enter SEO description"
                     v-model="value.description[locale]"
                     @input="setHasChanged"
