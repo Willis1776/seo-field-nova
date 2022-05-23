@@ -31,7 +31,7 @@
                 />
             </div>
             <div class="form-group mb-3">
-                <label class="mb-1 block">Keywords [{{locale}}]:</label>
+                <label class="mb-1 block">Keywords:</label>
                 <textarea
                     class="w-full form-control form-input form-input-bordered py-3 h-auto"
                     :id="field.name + locale + '-keywords'"
