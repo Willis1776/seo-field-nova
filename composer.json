@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=7.3.0",
-        "larvel/nova": "^4.0.0"
+        "laravel/nova": "^4.0.0"
 
     },
     "repositories": [
