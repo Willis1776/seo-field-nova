@@ -1,50 +1,50 @@
 <template>
-    <panel-item :field="field">
-        {{ field.name }}
-        <div slot="value" class="seo-meta-detail">
-            <b v-if="!hasSeo">You need some SEO data</b>
-            <button
-                type="button"
-                class="btn btn-primary btn-default"
-                @click="showSeoPreviews = !showSeoPreviews"
-                v-if="hasSeo"
-            >{{ showSeoPreviews ? 'Hide' : 'Show' }} SEO previews
-            </button>
-            <div class="seo-meta-detail__previews" v-if="showSeoPreviews && hasSeo" v-for="(locale,index) in availableLocales" :key="index">
-                <div class="seo-meta-detail__wrapper">
-                    <div class="seo-meta-detail__wrapper__label">Google [{{ locale }}]</div>
-                    <div class="seo-meta-detail__wrapper__item seo-meta-detail__google">
-                        <div class="seo-meta-detail__google__title">{{ seoTitleFor(locale) }}</div>
-                        <div
-                            class="seo-meta-detail__google__url"
-                        >{{
-                                (field.url || field.hostname).replace(/:\/\//, ':||').replace(/(\/)/g, ' › ').replace(':||', '://')
-                            }}
-                        </div>
-                        <div
-                            class="seo-meta-detail__google__description"
-                        >{{ field.value.description[locale] }}
+    <PanelItem :field="field">
+        <template #value>
+            {{ field.name }}
+            <div slot="value" class="seo-meta-detail">
+                <b v-if="!hasSeo">{{ __('You need some SEO data') }}</b>
+                <button
+                    type="button"
+                    class="btn btn-primary btn-default"
+                    @click="showSeoPreviews = !showSeoPreviews"
+                    v-if="hasSeo"
+                >{{ showSeoPreviews ? __('Hide') : __('Show') }} {{ __('SEO previews') }}
+                </button>
+                <div class="seo-meta-detail__previews" v-if="showSeoPreviews && hasSeo">
+                    <div class="seo-meta-detail__wrapper">
+                        <div class="seo-meta-detail__wrapper__label">Google</div>
+                        <div class="seo-meta-detail__wrapper__item seo-meta-detail__google">
+                            <div class="seo-meta-detail__google__title">{{ seoTitle }}</div>
+                            <div
+                                class="seo-meta-detail__google__url"
+                            >{{ (field.url || field.hostname).replace(/:\/\//, ':||').replace(/(\/)/g, ' › ').replace(':||', '://') }}
+                            </div>
+                            <div
+                                class="seo-meta-detail__google__description"
+                            >{{ field.value.description }}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="seo-meta-detail__wrapper">
-                    <div class="seo-meta-detail__wrapper__label">Facebook [{{ locale }}]</div>
-                    <div class="seo-meta-detail__wrapper__item seo-meta-detail__facebook">
-                        <div class="seo-meta-detail__facebook__image" v-if="field.image_url">
-                            <img :src="field.image_url"/>
-                        </div>
-                        <div class="seo-meta-detail__facebook__info">
-                            <div
-                                class="seo-meta-detail__facebook__domain"
-                            >{{ field.hostname.replace(/^https?:\/\//g, '') }}
+                    <div class="seo-meta-detail__wrapper">
+                        <div class="seo-meta-detail__wrapper__label">Facebook</div>
+                        <div class="seo-meta-detail__wrapper__item seo-meta-detail__facebook">
+                            <div class="seo-meta-detail__facebook__image" v-if="field.image_url">
+                                <img :src="field.image_url"/>
                             </div>
-                            <div class="seo-meta-detail__facebook__title">{{ seoTitleFor(locale) }}</div>
+                            <div class="seo-meta-detail__facebook__info">
+                                <div
+                                    class="seo-meta-detail__facebook__domain"
+                                >{{ field.hostname.replace(/^https?:\/\//g, '') }}
+                                </div>
+                                <div class="seo-meta-detail__facebook__title">{{ seoTitle }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </panel-item>
+        </template>
+    </PanelItem>
 </template>
 
 <script>
@@ -52,31 +52,25 @@ export default {
     props: ["resource", "resourceName", "resourceId", "field"],
     data() {
         return {
-            showSeoPreviews: false,
-            availableLocales: this.field.available_locales,
+            showSeoPreviews: false
         };
     },
     computed: {
         hasSeo() {
             const value = this.field.value;
-            let hasTitleForAnyLocale = false;
-            for (const locale in value.title) {
-                if (value.title[locale] && value.title[locale].trim() !== ''){
-                    hasTitleForAnyLocale = true;
-                }
+            if (value && value.title) {
+                return true;
             }
-            return hasTitleForAnyLocale;
+            return false;
         },
-    },
-    methods:{
-        seoTitleFor(locale) {
+        seoTitle() {
             const field = this.field;
             const value = field.value;
-            if (value && value.title && value.title[locale]) {
+            if (value && value.title) {
                 if (field.title_format) {
-                    return field.title_format.replace(":text", value.title[locale]);
+                    return field.title_format.replace(":text", value.title);
                 }
-                return value.title[locale];
+                return value.title;
             }
             return null;
         }

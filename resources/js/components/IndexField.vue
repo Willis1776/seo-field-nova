@@ -15,19 +15,13 @@ export default {
                         value.follow_type
                     ) >= 0
                 ) {
-                    let hasTitleForAnyLocale = false;
-                    for (const locale in value.title) {
-                        if (value.title[locale] && value.title[locale].trim() !== ''){
-                            hasTitleForAnyLocale = true;
-                        }
+                    if (value.title) {
+                        return "bg-red-500";
                     }
-                    if (hasTitleForAnyLocale) {
-                        return "bg-success";
-                    }
-                    return "bg-warning";
+                    return "bg-yellow-500";
                 }
             }
-            return "bg-danger";
+            return "bg-green-500";
         }
     }
 };

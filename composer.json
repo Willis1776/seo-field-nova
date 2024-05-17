@@ -15,8 +15,16 @@
         "nova"
     ],
     "require": {
-        "php": ">=7.1.0"
+        "php": ">=7.3.0",
+        "larvel/nova": "^4.0.0"
+
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Willis1776\\SeoMeta\\": "src/"

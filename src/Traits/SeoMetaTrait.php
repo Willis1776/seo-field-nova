@@ -120,6 +120,11 @@ trait SeoMetaTrait
     return $this->follow;
   }
 
+  public function getCanonicalLinks(): array
+  {
+    return $this->seo_meta->params->canonical_links ?? [];
+  }
+
   /**
    * @return array
    * @throws \Exception
